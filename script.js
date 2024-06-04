@@ -12,6 +12,7 @@ const aqiHash = {
 
 async function getResponse(){
     try{
+        require('dotenv').config();
         const _API_KEY = process.env.API_KEY;
 
         place = document.querySelector(".searchBox").value;
