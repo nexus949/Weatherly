@@ -10,8 +10,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(53,69,69);
-    background: linear-gradient(0deg, rgba(53,69,69,1) 0%, rgba(19,19,18,1) 100%);
+    background-image: linear-gradient(to right top, #0b131e, #0e1724, #101b2a, #121f31, #142337);
 }
 
 .container{
@@ -19,7 +18,7 @@ body{
     height: 63%;
     border: 2px solid black;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -27,7 +26,9 @@ body{
     align-items: center;
     background-color: #0b131e;
     color: #eef2f5;
-    box-shadow: 0px 0px 10px 1px #eef2f5;
+    box-shadow: 0px 0px 10px 1px #213248;
+    min-height: 650px;
+    min-width: 300px;
 }
 
 .search, .place, .time_n_date, .icon, .temp, .condition, .grid_div, .poweredBy{
@@ -79,7 +80,10 @@ body{
 .icon{
     width: 6rem;
     height: 6rem;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
 .temp{
@@ -107,6 +111,7 @@ body{
     background-color: #2d3a4e;
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 } 
 
 .spanA{
@@ -119,6 +124,7 @@ body{
 }
 
 .poweredBy{
+    padding-top: 5px;
     font-size: smaller;
     font-weight: 500;
     text-align: center;
