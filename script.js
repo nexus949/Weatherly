@@ -12,9 +12,11 @@ const aqiHash = {
 
 async function getResponse(){
     try{
+        const _API_KEY = process.env.API_KEY;
+
         place = document.querySelector(".searchBox").value;
 
-        response = await fetch(`http://api.weatherapi.com/v1/current.json?key=api_key=${place}&aqi=yes`);
+        response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${_API_KEY}=${place}&aqi=yes`);
         if(!response.ok){
             console.error(`Error: ${response.status} - ${response.statusText}`);
             return
