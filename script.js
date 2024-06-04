@@ -11,12 +11,23 @@ const aqiHash = {
 }
 
 async function getResponse(){
-    place = document.querySelector(".searchBox").value;
+    try{
+        place = document.querySelector(".searchBox").value;
 
-    response = await fetch(`http://api.weatherapi.com/v1/current.json?key=3ec38af15e3c4d18a2b144806242204&q=${place}&aqi=yes`);
-    response = await response.json();
-    console.log(response);
+        response = await fetch(`http://api.weatherapi.com/v1/current.json?key=api_key=${place}&aqi=yes`);
+        if(!response.ok){
+            console.error(`Error: ${response.status} - ${response.statusText}`);
+            return
+        }
 
+        response = await response.json();
+    }
+    catch(error){
+        console.log(error);
+        return;
+    }
+
+    //set the data only and only if there is no error
     setData(response, place);
 }
 
@@ -25,21 +36,22 @@ function setData(currentData, place){
     let location = place[0].toUpperCase() + place.slice(1); //capitalize the first letter of the location string
     document.querySelector(".location").textContent = location;
 
-    //set the region
+    //set the region and country
     let region = currentData.location['region'];
-    document.querySelector(".region").textContent = "Region: " + region;
-
-    //set the country
     let country = currentData.location['country'];
-    document.querySelector(".country").textContent = "Country: " + country;
+
+    document.querySelector(".region_n_country").textContent = region + ', ' + country;
 
     //set the current Date
     let date = currentData.location['localtime'];
-    document.querySelector(".date").textContent = date;
+    document.querySelector(".time_n_date").textContent = date;
 
     //set the temperature
     let temp = currentData.current['temp_c'];
     document.querySelector(".temperature").textContent = temp + "°C";
+
+    //change the icon
+    changeIcon(currentData);
 
     //set the current weather condition
     let condition = currentData.current.condition['text'];
@@ -47,50 +59,23 @@ function setData(currentData, place){
 
     //set the humidity
     let humidity = currentData.current['humidity'];
-    document.querySelector(".h_value").textContent = humidity + '%';
+    document.querySelector("#h_value").textContent = humidity + '%';
 
     //set the wind speed
     let wind_speed = currentData.current['gust_kph'];
-    document.querySelector(".w_value").textContent = wind_speed + ' Kmph';
+    document.querySelector("#w_value").textContent = wind_speed + ' Kmph';
 
     //set the Air Quality
     let aqi = currentData.current.air_quality['us-epa-index'];
     aqi = aqiHash[`${aqi}`];
-    document.querySelector(".air_quality").textContent = "Air Quality: \n" + aqi;
+    document.querySelector("#air_quality").textContent = aqi;
 
-    //change the icon
-    changeIcon(currentData);
-
-    //set the air pollutant data
-    setPollutantData(currentData);
+    //set feelsLike Data
+    let feelsLike = currentData.current.feelslike_c;
+    document.querySelector('#feelsLike_value').textContent = feelsLike + '°C';
 }
 
 function changeIcon(currentData){
     let icon = currentData.current.condition['icon'];
-    document.querySelector(".con_image").src = icon;
-}
-
-function setPollutantData(currentData){
-    let pollutantList = {
-        co: null,
-        no2: null,
-        so2: null,
-        o3: null,
-        pm2_5: null,
-        pm10: null
-    }
-
-    let pollutantData = currentData.current['air_quality'];
-
-    //map the values
-    for(key in pollutantData){
-        if(pollutantList.hasOwnProperty(key) && pollutantData.hasOwnProperty(key)){
-            pollutantList[key] = pollutantData[key];
-        }
-    }
-
-    console.log(pollutantList);
-    for(item in pollutantList){
-        document.querySelector(`#${item}`).textContent = `${item}`.toUpperCase() + ": "  + pollutantList[item];
-    }
+    document.querySelector(".icon").src = icon;
 }
