@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;    
+    color: black;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.container{
+    height: 90%;
+    width: 70%;
+    min-width: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 15px;
+    background-color: #2f2f2f;
+    border-radius: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.searchBox{
+    border: 2px solid #fff;
+    border-radius: 200px;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 35%;
+    position: relative;
+    right: 140px;
+    background-color: black;
+}
+
+#searchButton{
+    position: absolute;
+    right: 290px;
+    top: 42.5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.upperBox{
+    width: 70%;
+    height: 30%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    background-color: black;
+}
+
+.subUpperBox1, .subUpperBox2{
+    width: 50%;
+    height: 100%;
+}
+
+.location{
+    font-size: 2.5rem;
+}
+
+.date{
+    font-size: 1rem;
+}
+
+.temp{
+    font-size: 3rem;
+    margin-top: 70px;
+}
+
+.subUpperBox1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subUpperBox2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.con_image, .condition{
+    position: relative;
+    left: 30px;
+}
+
+.con_image{
+    height: 110px; 
+    width: 110px; 
+}
+
+.condition{
+    font-size: 1.5rem;
+}
+
+.middleBox{
+    width: 70%;
+    height: 33%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    margin-top: 15px;
+    background-color: black;
+}
+
+#windIcon, #dropletIcon, .humid, .w_speed{
+    display: inline;
+    font-size: 1.5rem;
+}
+
+.h_value, .w_value{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.lowerBox{
+    width: 70%;
+    height: 33%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    margin-top: 15px;
+    background-color: black;
+}
+
+.aqi{
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.otherAirInfo{
+    height: 100%;
+    font-size: 1.3rem;
+    text-align: justify;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>weather app</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="searchBox" placeholder="Search">
+        <i class="fa-solid fa-magnifying-glass" id="searchButton" onclick="getResponse()"></i>
+
+        <div class="upperBox">
+            <div class="subUpperBox1">
+                <div class="loc_n_date">
+                    <p class="location">New Delhi</p>
+                    <p class="region">Region: Delhi<p>
+                    <p class="country">Country: India</p>
+                    &nbsp;
+                    <p class="date">25-04-2024 00:00</p>
+                </div>
+
+                <div class="temp"><p class="temperature">45°C</p></div>
+            </div>
+
+            <div class="subUpperBox2">
+                <img src="//cdn.weatherapi.com/weather/64x64/day/113.png" class="con_image">
+                <p class="condition">Sunny</p>
+            </div>
+        </div>
+
+        <div class="middleBox">
+            <div class="humidity">
+                <i class="fa-solid fa-droplet" id="dropletIcon"></i>
+                <p class="humid">Humidity:</p>
+                <p class="h_value">0</p>
+            </div>
+
+            <div class="wind_speed">
+                <i class="fa-solid fa-wind" id="windIcon"></i>
+                <p class="w_speed">Wind Speed:</p>
+                <p class="w_value">0</p>
+            </div>
+        </div>
+
+        <div class="lowerBox">
+            <div class="aqi">
+                <p class="air_quality">Air Quality: Good</p>
+            </div>
+
+            <div class="otherAirInfo">
+                <p class="pollutants">Pollutants (μg/m3)</p>&nbsp;
+                <div class="pollutantList">
+                    <p id="co" class="airPollutant">CO: 0</p>
+                    <p id="no2" class="airPollutant">NO2: 0</p>
+                    <p id="so2" class="airPollutant">SO2: 0</p>
+                    <p id="o3" class="airPollutant">O3: 0</p>
+                    <p id="pm2_5" class="airPollutant">PM2.5: 0</p>
+                    <p id="pm10" class="airPollutant">PM10: 0</p>
+                </div> 
+            </div>
+        </div>
+
+        <div class="poweredby" style="margin-top: 15px;"> Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a></div>
+       
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
