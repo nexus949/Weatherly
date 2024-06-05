@@ -46,14 +46,12 @@ body{
     align-items: center;
     background-color: #0b131e;
     color: #eef2f5;
-    /* box-shadow: 0px 0px 10px 1px #213248; */
     box-shadow: 7px 4px 25px 6px rgba(33, 50, 72, 0.75);
     min-height: 620px;
     min-width: 300px;
 }
 
 .search, .place, .time_n_date, .icon, .temp, .condition, .grid_div, .poweredBy{
-    /* border: 2px solid black; */
     margin: 5px;
 } 
 
@@ -126,7 +124,6 @@ body{
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
-    padding-bottom: 5px;
 }
 
 .temp{
@@ -175,7 +172,6 @@ body{
 
 a{
     color: #9cc5e5;
-    /* text-decoration: none; */
 }
 
 .searchButton:hover{
