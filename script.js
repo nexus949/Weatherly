@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to get search suggestions
     async function getSuggestions(query) {
         try {
-            const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=5989b0093caf487a8c970518240606&q=${query}`);
+            const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=5989b0093caf487a8c970518240606&q=${query}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -580,7 +580,7 @@ async function getResponse() {
     if (query.length === 0) return;
 
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=5989b0093caf487a8c970518240606&q=${query}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5989b0093caf487a8c970518240606&q=${query}`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
