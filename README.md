@@ -12,3 +12,4 @@ In the script.js file, just replace the ```API_KEY``` in the ```fetch()``` param
 
 Additional Credits: 
 @itsdstar (https://github.com/itsdstar) - For making the app responsive by doing proper changes to the css file. 
+Live Website: https://itsdstar.github.io/Weather_app/
