@@ -93,7 +93,7 @@ async function getResponse() {
     try {
         place = document.querySelector(".searchBox").value;
 
-        response = await fetch(`https://api.weatherapi.com/v1/current.json?key=55dfb6f6a06e4f578a765218240606&q=${place}&aqi=yes`);
+        response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5989b0093caf487a8c970518240606&q=${place}&aqi=yes`);
         if (!response.ok) {
             console.error(`Error: ${response.status} - ${response.statusText}`);
             return;
