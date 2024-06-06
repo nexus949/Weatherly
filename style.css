@@ -89,7 +89,7 @@ body{
     transition: background-color 0.3s;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover, .dropdown-item.selected {
     background-color: #37465a;
 }
 
@@ -196,7 +196,21 @@ a{
 }
 
 .searchBox:not(:focus){
-    color: #eef2f5;
     background-color: #2d3a4e;
+    color: #eef2f5;
     transition-duration: 0.2s;
-}
+    }
+    
+    .dropdown::-webkit-scrollbar {
+    width: 8px;
+    }
+    
+    .dropdown::-webkit-scrollbar-track {
+    background: #2d3a4e;
+    }
+    
+    .dropdown::-webkit-scrollbar-thumb {
+    background-color: #37465a;
+    border-radius: 20px;
+    border: 3px solid #2d3a4e;
+    }
