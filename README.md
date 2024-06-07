@@ -4,13 +4,15 @@ This app is not meant for any commercial use by any means and is built for educa
 
 The weather report is fetched from https://www.weatherapi.com/ which delivers proper data most of the time but may posses some "incorrect" data at times. Long story short its not 100% accurate !
 
-The Search Option in this project is the simplest one and dosen't use any type of filtering, search optimization or similar stuff. The value you enter is sent through the api and may lead to incorrect data !
-Search Results are truly based on what you search !!
+The Search Option uses a js array to add location suggestion based on the input which speeds up the search process for the api and also opens a drop down menu to choose from. This search option is not the best in the implementation of 
+search result optimization and filtering but does the basic job well !
 
-The API key for this project is not provided hence you will need your own api key to make it work. https://www.weatherapi.com/ provides free api keys upon account creation and can be used for the same !
-In the script.js file, just replace the ```API_KEY``` in the ```fetch()``` parameter with your api key and it should work fine !
+The API key for this project is a temporary key and hence might not work in the future. https://www.weatherapi.com/ provides free api keys upon account creation and can be used if needed for permanent use !
 
 Additional Credits: 
-@itsdstar (https://github.com/itsdstar) - For making the app responsive by doing proper changes to the css file. 
+@itsdstar (https://github.com/itsdstar) - For making significant changes to css file and also adding a suggestion drop down filter and other functionality for faster api responses !
 
-Live Website: https://itsdstar.github.io/Weather_app/
+Live Websites: 
+
+
+https://itsdstar.github.io/Weather_app/
