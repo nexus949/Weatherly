@@ -1,4 +1,4 @@
-This is a Beginner Level Weather App project made using HTML, CSS and Vanilla JavaScript. 
+This Weather App project made using HTML, CSS and Vanilla JavaScript. 
 
 This app is not meant for any commercial use by any means and is built for educational and learning purposes only.
 
