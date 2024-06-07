@@ -1,57 +1,80 @@
-let place = "";
-let response = "";
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBox = document.querySelector('.searchBox');
+    const dropdown = document.getElementById('dropdown');
+    let debounceTimeout;
 
-const aqiHash = {
-    1: "Good",
-    2: "Moderate",
-    3: "Unhealthy (Sensitive)",
-    4: "Unhealthy",
-    5: "Very Unhealthy",
-    6: "Hazardous"
-}
-
-async function getResponse(){
-    try{
-        place = document.querySelector(".searchBox").value;
-
-        response = await fetch(`https://api.weatherapi.com/v1/current.json?key=API_KEY=${place}&aqi=yes`);
-        if(!response.ok){
-            console.error(`Error: ${response.status} - ${response.statusText}`);
-            return
+    // Function to get search suggestions
+    async function getSuggestions(query) {
+        try {
+            const response = await fetch(`https://api.weatherapi.com/v1/search.json?key=5989b0093caf487a8c970518240606&q=${query}&aqi=yes`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        } 
+        catch (error) {
+            console.error('Error fetching suggestions:', error);
+            return [];
         }
-
-        response = await response.json();
-    }
-    catch(error){
-        console.log(error);
-        return;
     }
 
-    //set the data only and only if there is no error
-    setData(response, place);
-}
+    // Function to handle search box input with debouncing
+    searchBox.addEventListener('input', () => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(async () => {
+            const query = searchBox.value.trim();
+            if (query.length > 0) {
+                // Filter predefined locations
+                const filteredCommonLocations = commonLocations.filter(location =>
+                    location.toLowerCase().includes(query.toLowerCase())
+                );
 
-function setData(currentData, place){
-    //set the location
-    let location = place[0].toUpperCase() + place.slice(1); //capitalize the first letter of the location string
-    document.querySelector(".location").textContent = location;
+                dropdown.innerHTML = '';
+                
+                // Display filtered predefined locations
+                filteredCommonLocations.forEach((location, index) => {
+                    const div = document.createElement('div');
+                    div.classList.add('dropdown-item');
+                    div.textContent = location;
+                    div.setAttribute('data-index', index);
+                    div.addEventListener('click', () => {
+                        searchBox.value = location;
+                        dropdown.style.display = 'none';
+                        getResponse();
+                    });
+                    dropdown.appendChild(div);
+                });
 
-    //set the region and country
-    let region = currentData.location['region'];
-    let country = currentData.location['country'];
+                if (filteredCommonLocations.length > 0) {
+                    dropdown.style.display = 'block';
+                }
 
-    document.querySelector(".region_n_country").textContent = region + ', ' + country;
+                // Fetch additional suggestions from API if needed
+                if (filteredCommonLocations.length < 5) {
+                    const suggestions = await getSuggestions(query);
+                    suggestions.forEach((suggestion, index) => {
+                        const div = document.createElement('div');
+                        div.classList.add('dropdown-item');
+                        div.textContent = suggestion.name;
+                        div.setAttribute('data-index', index + filteredCommonLocations.length);
+                        div.addEventListener('click', () => {
+                            searchBox.value = suggestion.name;
+                            dropdown.style.display = 'none';
+                            getResponse();
+                        });
+                        dropdown.appendChild(div);
+                    });
 
-    //set the current Date
-    let date = currentData.location['localtime'];
-    document.querySelector(".time_n_date").textContent = date;
-
-    //set the temperature
-    let temp = currentData.current['temp_c'];
-    document.querySelector(".temperature").textContent = temp + "°C";
-
-    //change the icon
-    changeIcon(currentData);
+                    if (suggestions.length > 0) {
+                        dropdown.style.display = 'block';
+                    }
+                }
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }, 300); // Adjust debounce delay as needed
+    });
 
     // Hide dropdown menu when clicking outside
     document.addEventListener('click', (event) => {
@@ -108,7 +131,7 @@ async function getResponse() {
     if (query.length === 0) return;
 
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5989b0093caf487a8c970518240606&q=${query}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=5989b0093caf487a8c970518240606&q=${query}&aqi=yes`);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
