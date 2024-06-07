@@ -10,7 +10,27 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right top, #0b131e, #0e1724, #101b2a, #121f31, #142337);
+    background: linear-gradient(233deg, #0b131e, #0e1724, #101b2a, #121f31, #142337);
+    background-size: 1000% 1000%;
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
 }
 
 .container{
@@ -27,12 +47,11 @@ body{
     background-color: #0b131e;
     color: #eef2f5;
     box-shadow: 0px 0px 10px 1px #213248;
-    min-height: 630px;
+    min-height: 650px;
     min-width: 300px;
 }
 
 .search, .place, .time_n_date, .icon, .temp, .condition, .grid_div, .poweredBy{
-    /* border: 2px solid black; */
     margin: 5px;
 } 
 
@@ -50,6 +69,28 @@ body{
     color: #eef2f5;
     border: none;
     font-weight: 700;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #2d3a4e;
+    box-shadow: 7px 4px 25px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    color: #eef2f5;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover, .dropdown-item.selected {
+    background-color: #37465a;
 }
 
 .searchButton{
@@ -83,7 +124,6 @@ body{
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
-    padding-bottom: 5px;
 }
 
 .temp{
@@ -132,7 +172,6 @@ body{
 
 a{
     color: #9cc5e5;
-    /* text-decoration: none; */
 }
 
 .searchButton:hover{
@@ -157,7 +196,21 @@ a{
 }
 
 .searchBox:not(:focus){
-    color: #eef2f5;
     background-color: #2d3a4e;
+    color: #eef2f5;
     transition-duration: 0.2s;
-}
+    }
+    
+    .dropdown::-webkit-scrollbar {
+    width: 8px;
+    }
+    
+    .dropdown::-webkit-scrollbar-track {
+    background: #2d3a4e;
+    }
+    
+    .dropdown::-webkit-scrollbar-thumb {
+    background-color: #37465a;
+    border-radius: 20px;
+    border: 3px solid #2d3a4e;
+    }
