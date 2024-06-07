@@ -141,12 +141,12 @@ async function getResponse() {
         document.querySelector('.region_n_country').textContent = `${data.location.region}, ${data.location.country}`;
         document.querySelector('.time_n_date span').textContent = data.location.localtime;
         document.querySelector('.icon').src = `//cdn.weatherapi.com/weather/64x64/day/${data.current.condition.icon.split('/').pop()}`;
-        document.querySelector('.temperature').textContent = `${data.current.temp_c}°`;
+        document.querySelector('.temperature').textContent = `${data.current.temp_c}°C`;
         document.querySelector('.sub_condition').textContent = data.current.condition.text;
         document.getElementById('h_value').textContent = `${data.current.humidity}%`;
         document.getElementById('w_value').textContent = `${data.current.wind_kph}Kmph`;
         document.getElementById('air_quality').textContent = getAirQuality(data.current.air_quality);
-        document.getElementById('feelsLike_value').textContent = `${data.current.feelslike_c}°`;
+        document.getElementById('feelsLike_value').textContent = `${data.current.feelslike_c}°C`;
     } catch (error) {
         console.error('Error fetching weather data:', error);
     }
